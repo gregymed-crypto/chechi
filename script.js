@@ -148,6 +148,29 @@ class SmoothScroller {
   }
 }
 
+// Hero Banner Parallax Effect
+class ParallaxEffect {
+  constructor() {
+    this.heroBanner = document.querySelector(".hero-banner");
+    this.init();
+  }
+
+  init() {
+    if (!this.heroBanner) return;
+
+    window.addEventListener("scroll", () => this.handleScroll(), {
+      passive: true,
+    });
+    perfMonitor.log("Parallax effect initialized");
+  }
+
+  handleScroll() {
+    const scrolled = window.pageYOffset;
+    const rate = scrolled * 0.3;
+    this.heroBanner.style.transform = `translateY(${rate}px) scale(1.1)`;
+  }
+}
+
 // Navbar Scroll Effects - Professional Polish
 class NavbarController {
   constructor() {
@@ -182,7 +205,7 @@ class NavbarController {
 class AnimationController {
   constructor() {
     this.elements = document.querySelectorAll(
-      "section, .stat-card, .service-card, .value-card, .why-card, .mv-card",
+      "section, .stat-card, .service-card, .value-card, .why-card, .mv-card, .about-image-wrapper",
     );
     this.init();
   }
@@ -355,6 +378,7 @@ document.addEventListener("DOMContentLoaded", () => {
   new ThemeManager();
   new MobileMenu();
   new SmoothScroller();
+  new ParallaxEffect();
   new NavbarController();
   new AnimationController();
   new LazyLoader();
