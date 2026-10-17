@@ -9,7 +9,7 @@ const perfMonitor = {
   },
 };
 
-// Theme Management with Smooth Transitions
+// Theme Management with Smooth Transitionss
 class ThemeManager {
   constructor() {
     this.html = document.documentElement;
